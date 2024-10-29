@@ -28,10 +28,10 @@ import './Styles/global.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    {/* <ThemeProvider theme={theme}> */}
+      {/* <CssBaseline /> */}
       <App />
-    </ThemeProvider>
+    {/* </ThemeProvider> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
