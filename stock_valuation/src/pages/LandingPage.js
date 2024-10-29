@@ -1,14 +1,13 @@
 import React from 'react'
 import HeaderTemplate from '../components/Templates/HeaderTemplate'
 
-const LoginPage = () => {
+const LandingPage = () => {
   return (
     <div>
-
         <HeaderTemplate/>
     </div>
 
   )
 }
 
-export default LoginPage
+export default LandingPage

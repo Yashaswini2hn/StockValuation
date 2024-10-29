@@ -1,141 +1,94 @@
-
-
-import React, { useState } from 'react'
-// import theme from '../../theme';
-import { AppBar, Button, Drawer, IconButton, List, ListItem, ListItemText, Toolbar, Typography, useMediaQuery } from '@mui/material';
+import React from 'react';
+import { Box, Typography, AppBar, Toolbar, IconButton } from '@mui/material';
 import styled from '@emotion/styled';
-// import Logo from '../../assets/logo.png'
-import MenuIcon from '@mui/icons-material/Menu';
-// import HeaderProfile from '../Molecules/HeaderProfile';
-// import GradientIconButton from '../Atoms/Buttons/GradientIconButton';
+import { Global, css } from '@emotion/react'; 
+import GroupIcon from '../../assests/Group 1116605015.svg'; // Fluctuation icon
+import Person4OutlinedIcon from '@mui/icons-material/Person4Outlined';
 
 const StyledAppBar = styled(AppBar)({
-    // backgroundColor: theme.palette.neutral.shade,
-    // boxShadow: theme.palette.shadow.primary, // Add box shadow here
-    borderRadius: '50px',
-    // paddingRight: ' 0 20px !important',
-    // margin: '24px 24px',
-    right: 'auto',
-    position: 'relative'
-    // border: theme.palette.border.primary, // Add border color and width here 
+  backgroundColor: '#FFFFFF',
+  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+  padding: '10px 40px',
 });
 
 const StyledToolbar = styled(Toolbar)({
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  justifyContent: 'space-between',
+  alignItems: 'center',
 });
 
-// Navigation items for desktop view
-const NavMenu = styled('div')(({ isMobile }) => ({
-    display: isMobile ? 'none' : 'flex',
-    gap: '24px',
-    alignItems: 'center',
-}));
-
-const NavItem = styled(Typography)({
-    fontSize: '16px',
-    fontWeight: 'normal',
-    color: '#000',
-    cursor: 'pointer',
-    '&:hover': {
-        fontWeight: 'bold',
-    },
+const LogoContainer = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
 });
 
-// Hamburger Menu for Mobile
-const MenuIconContainer = styled(IconButton)(({ isMobile }) => ({
-    display: isMobile ? 'block' : 'none',
-    color: '#000',
-}));
-
-// Drawer styles for mobile menu
-const MobileDrawer = styled(Drawer)({
-    '& .MuiDrawer-paper': {
-        width: '250px',
-    },
+const LogoText = styled(Typography)({
+  fontFamily: 'Michroma, sans-serif',
+  fontSize: '30px',
+  fontWeight: 400,
+  lineHeight: '42.66px',
+  color: '#01441D',
+  textAlign: 'left',
+  position: 'relative',
 });
 
-const HeaderTemplate = ({ sx }) => {
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    // const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Use to check if mobile or desktop
+const FluctuationIcon = styled('img')({
+  position: 'absolute',
+  top: '-18px', 
+  left: '75px', 
+  height: '20px',
+  width: '20px',
+});
 
-    const handleProfileMenuOpen = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
+const LoginContainer = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '130px',
+  height: '52px',
+  borderRadius: '26px',
+  backgroundColor: '#FFFFFF',
+  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+  cursor: 'pointer',
+  gap: '8px',
+});
 
-    const handleMenuClose = () => {
-        setAnchorEl(null);
-    };
+const LoginText = styled(Typography)({
+  fontFamily: 'Inter',
+  fontSize: '20px',
+  fontWeight: 500,
+  lineHeight: '24.2px',
+  color: '#000000',
+});
 
-    const toggleDrawer = () => {
-        setIsDrawerOpen(!isDrawerOpen);
-    };
+const HeaderTemplate = () => {
+  return (
+    <>
+      <Global
+        styles={css`
+          @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+        `}
+      />
+      <StyledAppBar position="static">
+        <StyledToolbar>
+          {/* Logo Section */}
+          <LogoContainer>
+            <LogoText variant="h1">
+              StockValue
+              <FluctuationIcon src={GroupIcon} alt="Fluctuation Icon" />
+            </LogoText>
+          </LogoContainer>
 
-    return (
-        <StyledAppBar sx={sx} >
-            <StyledToolbar>
-                <img
-                    // src={Logo}
-                    alt="Logo"
-                    style={{ height: '40px', cursor: 'pointer' }}
-                />
+          {/* Login Section */}
+          <LoginContainer>
+            <IconButton>
+            <Person4OutlinedIcon style={{ height: '24px', width: '24px', color: '#000000' }} />
+            </IconButton>
+            <LoginText>Login</LoginText>
+          </LoginContainer>
+        </StyledToolbar>
+      </StyledAppBar>
+    </>
+  );
+};
 
-                {/* Navigation Menu for Desktop */}
-                <NavMenu 
-                // isMobile={isMobile}
-                >
-                    <NavItem>About</NavItem>
-                    <NavItem>The Hatchery</NavItem>
-                    <NavItem>Community</NavItem>
-                    <NavItem>
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                            {/* <HeaderProfile
-                                anchorEl={anchorEl}
-                                handleProfileMenuOpen={handleProfileMenuOpen}
-                                handleMenuClose={handleMenuClose}
-                            /> */}
-                        </div>
-                    </NavItem>
-
-                </NavMenu>
-
-                {/* Hamburger Menu for Mobile */}
-                <MenuIconContainer 
-                // isMobile={isMobile} 
-                onClick={toggleDrawer}>
-                    <MenuIcon />
-                </MenuIconContainer>
-
-                {/* Drawer for Mobile Navigation */}
-                <MobileDrawer anchor="right" open={isDrawerOpen} onClose={toggleDrawer}>
-                    <List>
-                        <ListItem button onClick={toggleDrawer}>
-                            <ListItemText primary="About" />
-                        </ListItem>
-                        <ListItem button onClick={toggleDrawer}>
-                            <ListItemText primary="The Hatchery" />
-                        </ListItem>
-                        <ListItem button onClick={toggleDrawer}>
-                            <ListItemText primary="Community" />
-                        </ListItem>
-                        <ListItem>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                {/* <HeaderProfile
-                                    anchorEl={anchorEl}
-                                    handleProfileMenuOpen={handleProfileMenuOpen}
-                                    handleMenuClose={handleMenuClose}
-                                /> */}
-                            </div>
-                        </ListItem>
-                    </List>
-                </MobileDrawer>
-
-            </StyledToolbar>
-
-        </StyledAppBar>
-
-    )
-}
-
-export default HeaderTemplate
+export default HeaderTemplate;
