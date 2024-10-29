@@ -33,10 +33,11 @@ const LogoText = styled(Typography)({
 
 const FluctuationIcon = styled('img')({
   position: 'absolute',
-  top: '-18px', 
+  top: '-10px', 
   left: '75px', 
-  height: '20px',
-  width: '20px',
+  height: '25px',
+  width: '40px',
+  marginLeft:'35px'
 });
 
 const LoginContainer = styled(Box)({
