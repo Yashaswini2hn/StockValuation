@@ -4,13 +4,15 @@ import styled from '@emotion/styled';
 
 // Styled container for the advertisement post background
 const AdContainer = styled(Box)({
-  width: '338px',
+  width: '438px',
   height: '421px',
-  borderRadius: '10px 0px 0px 0px', // Rounded top-left corner only
+  borderRadius: '10px 10px 10px 10px', // Rounded top-left corner only
   backgroundColor: '#D9D9D9CC',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  marginLeft:'-60px',
+  marginTop:'60px'
 });
 
 // Styled text for "Advertisement Post"
