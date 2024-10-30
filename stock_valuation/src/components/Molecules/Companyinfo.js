@@ -12,6 +12,7 @@ import addIcon from '../../assests/add (1).svg';
 import AdvertisementPost from './AdvertisementPost';
 import HeartIcon from '../../assests/favorite.svg';
 
+
 const Container = styled(Box)({
   padding: '40px',
 });
@@ -232,127 +233,126 @@ const StyledButton = styled(Button)({
     padding: '20px',
     borderRadius: '10px',
     width: '1122px',
-    height: '361px',
-    backgroundColor: '#FFFFFF',
-    marginLeft: 'auto',
+    marginLeft: '130px',
     marginRight: 'auto',
-    overflow: 'hidden',
-  });
-  
-  const SectionHeader = styled(Typography)({
+});
+
+const SectionHeader = styled(Typography)({
     fontFamily: 'Poppins, sans-serif',
     fontSize: '24px',
     fontWeight: 600,
     marginBottom: '15px',
     color: '#000000',
-  });
-  
-  const TableHeaderCell = styled(TableCell)({
+});
+
+const TableHeaderCell = styled(TableCell)({
     fontWeight: 'bold',
     fontFamily: 'Poppins, sans-serif',
     fontSize: '16px',
     color: '#000000',
     textAlign: 'center',
-    borderBottom: '2px solid #000',
-    border: '1px solid #CCCCCC'
-  });
-  
-  const TableBodyCell = styled(TableCell)({
+    borderBottom: '1px solid #CCCCCC',
+    padding: '10px',
+});
+
+const TableBodyCell = styled(TableCell)({
     fontFamily: 'Poppins, sans-serif',
     fontSize: '16px',
     color: '#333333',
     textAlign: 'center',
-    borderBottom: '1px solid #CCCCCC',
-    border: '1px solid #CCCCCC'
-  });
-  
-  const HighlightedRow = styled(TableRow)({
-    border: '2px solid #000', // Thick black border for highlighted row
-  });
-  
-  const HighlightedCell = styled(TableBodyCell)({
+    borderBottom: '1px solid #CCCCCC', // Standard bottom border for other rows
+    padding: '10px',
+});
+
+const HighlightedRow = styled(TableRow)({
+    borderTop: '2px solid #000', // Black top border for Bosch row
+    borderBottom: '2px solid #000', // Black bottom border for Bosch row
+});
+
+const HighlightedCell = styled(TableBodyCell)({
     fontWeight: 600,
-    color: '#005BA1',
-  });
-  
-  const BlurredRow = styled(TableRow)({
+    color: '#000000', // Black text color for Bosch row
+    borderBottom: '2px solid #000', // Black bottom border
+});
+
+const BlurredRow = styled(TableRow)({
     filter: 'blur(4px)', // Blurred effect for non-highlighted rows
-  });
-  
-  const PeerComparison = () => {
+});
+
+const PeerComparison = () => {
     const peers = [
-      { name: 'Company A', pe: '9.20', roce: '30.50%', roa: '60.00%', roe: '45.00%', peg: '19.50', salesGrowth: '10.50' },
-      { name: 'Bosch', pe: '8.68', roce: '25.63%', roa: '57.79%', roe: '40.41%', peg: '21.92', salesGrowth: '9.60' },
-      { name: 'Company B', pe: '7.30', roce: '22.75%', roa: '50.50%', roe: '35.50%', peg: '17.00', salesGrowth: '8.50' },
+        { name: 'Company A', pe: '9.20', roce: '30.50%', roa: '60.00%', roe: '45.00%', peg: '19.50', salesGrowth: '10.50' },
+        { name: 'Bosch', pe: '8.68', roce: '25.63%', roa: '57.79%', roe: '40.41%', peg: '21.92', salesGrowth: '9.60' },
+        { name: 'Company B', pe: '7.30', roce: '22.75%', roa: '50.50%', roe: '35.50%', peg: '17.00', salesGrowth: '8.50' },
     ];
-  
+
+
     return (
-      <PeerComparisonContainer>
-        <SectionHeader>Peer Comparison</SectionHeader>
-        <Box display="flex" justifyContent="start" marginBottom="20px" gap="20px">
-          <Typography style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>Sector: <span style={{ color: '#007AFF', cursor: 'pointer' }}>Auto Ancillaries</span></Typography>
-          <Typography style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>Industry: <span style={{ color: '#007AFF', cursor: 'pointer' }}>Auto Ancillaries</span></Typography>
-        </Box>
-        <TableContainer component={Paper} style={{ boxShadow: 'none' }}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableHeaderCell>Name</TableHeaderCell>
-                <TableHeaderCell>PE</TableHeaderCell>
-                <TableHeaderCell>ROCE</TableHeaderCell>
-                <TableHeaderCell>ROA</TableHeaderCell>
-                <TableHeaderCell>ROE</TableHeaderCell>
-                <TableHeaderCell>PEG</TableHeaderCell>
-                <TableHeaderCell>Sales Growth</TableHeaderCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {peers.map((peer, index) => (
-                index === 1 ? (
-                  <HighlightedRow key={peer.name}>
-                    <HighlightedCell>{peer.name}</HighlightedCell>
-                    <HighlightedCell>{peer.pe}</HighlightedCell>
-                    <HighlightedCell>{peer.roce}</HighlightedCell>
-                    <HighlightedCell>{peer.roa}</HighlightedCell>
-                    <HighlightedCell>{peer.roe}</HighlightedCell>
-                    <HighlightedCell>{peer.peg}</HighlightedCell>
-                    <HighlightedCell>{peer.salesGrowth}</HighlightedCell>
-                  </HighlightedRow>
-                ) : (
-                  <BlurredRow key={peer.name}>
-                    <TableBodyCell>{peer.name}</TableBodyCell>
-                    <TableBodyCell>{peer.pe}</TableBodyCell>
-                    <TableBodyCell>{peer.roce}</TableBodyCell>
-                    <TableBodyCell>{peer.roa}</TableBodyCell>
-                    <TableBodyCell>{peer.roe}</TableBodyCell>
-                    <TableBodyCell>{peer.peg}</TableBodyCell>
-                    <TableBodyCell>{peer.salesGrowth}</TableBodyCell>
-                  </BlurredRow>
-                )
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        {/* Centered "Login to Unlock" button overlay */}
-        <Box position="relative" textAlign="center" marginTop="-60px">
-          <Button variant="contained" style={{ backgroundColor: '#005BA1',
-    color: '#FFFFFF',
-    fontFamily: 'Poppins, sans-serif',
-    fontSize: '14px',
-    fontWeight: 600,
-    textTransform: 'none',
-    position: 'absolute',
-    top: '10px',
-    left: '440px',
-    width: '150px',
-    marginTop:'20px',
-    zIndex: 1, }}>
-            Login to Unlock
-          </Button>
-        </Box>
-      </PeerComparisonContainer>
+        <PeerComparisonContainer>
+            <SectionHeader>Peer Comparison</SectionHeader>
+            <Box display="flex" justifyContent="start" marginBottom="20px" gap="20px">
+                <Typography style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>Sector: <span style={{ color: '#007AFF', cursor: 'pointer' }}>Auto Ancillaries</span></Typography>
+                <Typography style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>Industry: <span style={{ color: '#007AFF', cursor: 'pointer' }}>Auto Ancillaries</span></Typography>
+            </Box>
+            <TableContainer component={Paper} style={{ boxShadow: 'none', border: '2px solid #CCCCCC', borderRadius: '8px' }}>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableHeaderCell>Name</TableHeaderCell>
+                            <TableHeaderCell>PE</TableHeaderCell>
+                            <TableHeaderCell>ROCE</TableHeaderCell>
+                            <TableHeaderCell>ROA</TableHeaderCell>
+                            <TableHeaderCell>ROE</TableHeaderCell>
+                            <TableHeaderCell>PEG</TableHeaderCell>
+                            <TableHeaderCell>Sales Growth</TableHeaderCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {peers.map((peer, index) => (
+                            index === 1 ? (
+                                <HighlightedRow key={peer.name}>
+                                    <HighlightedCell>{peer.name}</HighlightedCell>
+                                    <HighlightedCell>{peer.pe}</HighlightedCell>
+                                    <HighlightedCell>{peer.roce}</HighlightedCell>
+                                    <HighlightedCell>{peer.roa}</HighlightedCell>
+                                    <HighlightedCell>{peer.roe}</HighlightedCell>
+                                    <HighlightedCell>{peer.peg}</HighlightedCell>
+                                    <HighlightedCell>{peer.salesGrowth}</HighlightedCell>
+                                </HighlightedRow>
+                            ) : (
+                                <BlurredRow key={peer.name}>
+                                    <TableBodyCell>{peer.name}</TableBodyCell>
+                                    <TableBodyCell>{peer.pe}</TableBodyCell>
+                                    <TableBodyCell>{peer.roce}</TableBodyCell>
+                                    <TableBodyCell>{peer.roa}</TableBodyCell>
+                                    <TableBodyCell>{peer.roe}</TableBodyCell>
+                                    <TableBodyCell>{peer.peg}</TableBodyCell>
+                                    <TableBodyCell>{peer.salesGrowth}</TableBodyCell>
+                                </BlurredRow>
+                            )
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+            {/* Centered "Login to Unlock" button overlay */}
+            <Box position="relative" textAlign="center" marginTop="-40px">
+                <Button variant="contained"  style={{
+                    backgroundColor: '#005BA1',
+                    color: '#FFFFFF',
+                    fontFamily: 'Poppins, sans-serif',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    textTransform: 'none',
+                    position: 'relative',
+                    width: '150px',
+                    zIndex: 1,
+                }}>
+                    Login to Unlock
+                </Button>
+            </Box>
+        </PeerComparisonContainer>
     );
-  };
+};
   
   const Stories = ({ isBlurred }) => (
     <StoriesContainer>
