@@ -31,10 +31,9 @@ const theme = createTheme({
     shadow: {
       primary: '0px 0px 17px 0px #00000010',
       
-    },
-
-    
+    },  
   },
+  
   typography: {
     fontFamily: 'Inter, sans-serif',
     fontWeightLight: 300,
@@ -42,6 +41,15 @@ const theme = createTheme({
     fontWeightMedium: 500,
     fontWeightSemiBold: 600,
     fontWeightBold: 700,
+  },
+  breakpoints: {
+    values: {
+      xs: 0,       // Mobile devices (portrait phones)
+      sm: 665,     // Small screen (landscape phones)
+      md: 960,     // Medium screens (tablets)
+      lg: 1280,    // Large screens (desktops)
+      xl: 1920,    // Extra large screens (large desktops)
+    },
   },
 });
 
